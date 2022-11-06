@@ -4,17 +4,18 @@ import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.itemsIndexed
-import androidx.compose.material.CircularProgressIndicator
-import androidx.compose.material.Scaffold
-import androidx.compose.material.Text
+import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.ArrowForward
+import androidx.compose.material.icons.filled.Search
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Color.Companion.Black
+import androidx.compose.ui.graphics.Color.Companion.LightGray
+import androidx.compose.ui.graphics.Color.Companion.White
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.graphics.ColorMatrix
 import androidx.compose.ui.layout.ContentScale
@@ -48,7 +49,9 @@ fun HomeScreen(
     val topHeadLines = state.value.news.banners
     val everything = state.value.news.everything
 
-    Scaffold{
+    Scaffold(
+        topBar = { AppBar() }
+    ){
         LazyColumn(modifier = Modifier.padding(paddingValues = it)){
 
 
@@ -413,9 +416,26 @@ fun NewsItemPreview() {
 }
 
 
+@Preview
+@Composable
+fun AppBar() {
+    TopAppBar(
+        title = {
+            Text(text = "Search News", fontFamily = FontFamily.Monospace)
+        },
+        backgroundColor = White,
+        navigationIcon = {
+            IconButton(onClick = {
 
-
-
+            }) {
+                Icon(
+                    modifier = Modifier.size(38.dp),
+                    imageVector = Icons.Default.Search,
+                    contentDescription = null)
+            }
+        }
+    )
+}
 
 
 
