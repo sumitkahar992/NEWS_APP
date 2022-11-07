@@ -1,4 +1,4 @@
-package com.example.paging_app.presentation.newsui
+package com.example.paging_app.presentation.newsui.home
 
 import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
@@ -14,7 +14,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Color.Companion.Black
-import androidx.compose.ui.graphics.Color.Companion.LightGray
 import androidx.compose.ui.graphics.Color.Companion.White
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.graphics.ColorMatrix
@@ -28,10 +27,14 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.navigation.NavController
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
 import com.example.paging_app.R
 import com.example.paging_app.domain.model.news.NewsResponse
+import com.example.paging_app.presentation.navigation.Screen
+import com.example.paging_app.presentation.newsui.components.AnimatedShimmerItem
+import com.example.paging_app.presentation.newsui.components.AnimatedSliderShimmerItem
 import com.example.paging_app.utils.dummyNewsItem
 import com.google.accompanist.pager.ExperimentalPagerApi
 import com.google.accompanist.pager.HorizontalPager
@@ -41,6 +44,7 @@ import com.google.accompanist.pager.rememberPagerState
 @OptIn(ExperimentalPagerApi::class)
 @Composable
 fun HomeScreen(
+    navController: NavController,
     viewModel: HomeViewModel = hiltViewModel()
 ) {
     val state = viewModel.state
@@ -50,7 +54,7 @@ fun HomeScreen(
     val everything = state.value.news.everything
 
     Scaffold(
-        topBar = { AppBar() }
+        topBar = { HomeAppBar() }
     ){
         LazyColumn(modifier = Modifier.padding(paddingValues = it)){
 
@@ -61,8 +65,13 @@ fun HomeScreen(
                         .fillMaxWidth()
                         .padding(start = 8.dp, end = 8.dp, top = 12.dp),
                     categories = viewModel.categories,
-                    onCategorySelected = {  }
-                )
+                ) {
+                    navController.currentBackStackEntry?.arguments?.putString(
+                        "category",
+                        it
+                    )
+                    navController.navigate(Screen.News.route)
+                }
             }
 
             item {
@@ -83,12 +92,16 @@ fun HomeScreen(
                         verticalAlignment = Alignment.Top
                     ) { position ->
                         val news = topHeadLines[position]
-                        NewsSlider(news = news) {
-
+                        NewsSlider(news = news)
+                        {
+                            navController.currentBackStackEntry?.arguments?.putParcelable(
+                                "news", news
+                            )
+                            navController.navigate(Screen.Detail.route)
                         }
                     }
                     if (state.value.isLoading) {
-                        CircularProgressIndicator()
+                        AnimatedSliderShimmerItem()
                     }
                     if (!state.value.error.isNullOrEmpty()) {
                         Box(
@@ -140,7 +153,7 @@ fun HomeScreen(
             // Shimmer for Home News
             if (state.value.isLoading) {
                 items(8) {
-                    CircularProgressIndicator()
+                    AnimatedShimmerItem()
                     Box(
                         modifier = Modifier
                             .fillMaxWidth()
@@ -154,7 +167,8 @@ fun HomeScreen(
 
             itemsIndexed(everything) {index, news ->
                 NewsItem(news = news) {
-
+                    navController.currentBackStackEntry?.arguments?.putParcelable("news", news)
+                    navController.navigate(Screen.Detail.route)
                 }
                 if (index < everything.lastIndex) {
                     Box(
@@ -210,7 +224,7 @@ fun HomeCategory(
                     fontFamily = FontFamily.Monospace,
                     fontWeight = FontWeight.Bold,
                     fontSize = 22.sp,
-                    color = Color.White
+                    color = White
                 )
                 Spacer(modifier = Modifier.padding(horizontal = 4.dp))
             }
@@ -418,7 +432,7 @@ fun NewsItemPreview() {
 
 @Preview
 @Composable
-fun AppBar() {
+fun HomeAppBar() {
     TopAppBar(
         title = {
             Text(text = "Search News", fontFamily = FontFamily.Monospace)

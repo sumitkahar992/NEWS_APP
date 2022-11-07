@@ -4,7 +4,8 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.viewModels
-import com.example.paging_app.presentation.newsui.HomeScreen
+import androidx.navigation.compose.rememberNavController
+import com.example.paging_app.presentation.navigation.AppNavGraph
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -16,8 +17,11 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
 
-            HomeScreen()
+            val navController = rememberNavController()
+
+            AppNavGraph(navController = navController)
 
         }
     }
 }
+

@@ -1,4 +1,4 @@
-package com.example.paging_app.presentation.newsui
+package com.example.paging_app.presentation.newsui.home
 
 import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf

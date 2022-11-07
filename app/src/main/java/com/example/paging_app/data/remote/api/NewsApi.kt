@@ -12,7 +12,7 @@ interface NewsApi {
 
     @GET("top-headlines")
     suspend fun getTopHeadlines(
-        @Query("country") country: String = "in",
+        @Query("country") country: String = "us",
         @Query("apiKey") apiKey: String = "2671fd27a2834fc1a0671903c9213771"
     ): NewsResponse
 
@@ -25,7 +25,7 @@ interface NewsApi {
 
     @GET("top-headlines")
     suspend fun getNewsByCategory(
-        @Query("country") country: String = "in",
+        @Query("country") country: String = "us",
         @Query("apiKey") apiKey: String = "2671fd27a2834fc1a0671903c9213771",
         @Query("category") category: String,
         @Query("page") page: Int,

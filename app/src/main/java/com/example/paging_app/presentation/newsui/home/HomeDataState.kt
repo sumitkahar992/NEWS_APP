@@ -1,4 +1,4 @@
-package com.example.paging_app.presentation.newsui
+package com.example.paging_app.presentation.newsui.home
 
 import com.example.paging_app.domain.model.news.NewsResponse
 
