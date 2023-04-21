@@ -1,11 +1,9 @@
 package com.example.paging_app.data.remote.api
 
-import com.example.paging_app.BuildConfig
 import com.example.paging_app.domain.model.paging.UserResponse
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.http.GET
 import retrofit2.http.Query
@@ -41,11 +39,10 @@ interface ApiService {
                     }.build())
 
                 }.also { client ->
-                    if (BuildConfig.DEBUG) {
-                        val logging = HttpLoggingInterceptor()
-                        logging.setLevel(HttpLoggingInterceptor.Level.BODY)
-                        client.addInterceptor(logging)
-                    }
+                    val logging = HttpLoggingInterceptor()
+                    logging.setLevel(HttpLoggingInterceptor.Level.BODY)
+                    client.addInterceptor(logging)
+
                 }.build()
         }
     }

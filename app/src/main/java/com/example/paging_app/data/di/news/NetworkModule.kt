@@ -1,6 +1,5 @@
 package com.example.paging_app.data.di.news
 
-import com.example.paging_app.BuildConfig
 import com.example.paging_app.data.remote.api.NewsApi
 import dagger.Module
 import dagger.Provides
@@ -20,11 +19,9 @@ object NetworkModule {
     @Singleton
     fun provideLoggingInterceptor(): HttpLoggingInterceptor {
         return HttpLoggingInterceptor().apply {
-            if (BuildConfig.DEBUG) {
-                setLevel(HttpLoggingInterceptor.Level.BODY)
-            } else {
-                setLevel(HttpLoggingInterceptor.Level.NONE)
-            }
+
+            this.setLevel(HttpLoggingInterceptor.Level.BODY)
+
         }
     }
 
