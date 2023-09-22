@@ -2,9 +2,21 @@ package com.example.paging_app.presentation.newsui.news
 
 import android.util.Log
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.material.*
+import androidx.compose.material.Icon
+import androidx.compose.material.IconButton
+import androidx.compose.material.Scaffold
+import androidx.compose.material.Text
+import androidx.compose.material.TopAppBar
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.runtime.Composable
@@ -18,7 +30,6 @@ import androidx.navigation.NavController
 import androidx.paging.LoadState
 import androidx.paging.compose.LazyPagingItems
 import androidx.paging.compose.collectAsLazyPagingItems
-import androidx.paging.compose.items
 import com.example.paging_app.domain.model.news.NewsResponse
 import com.example.paging_app.presentation.navigation.Screen
 import com.example.paging_app.presentation.newsui.home.NewsItem
@@ -27,7 +38,7 @@ import com.example.paging_app.presentation.newsui.home.NewsItem
 @Composable
 fun NewsScreen(
     navController: NavController,
-    newsViewModel: NewsViewModel = hiltViewModel()
+    newsViewModel: NewsViewModel = hiltViewModel(),
 ) {
     LaunchedEffect(key1 = true) {
         val category =
@@ -57,7 +68,7 @@ fun NewsScreen(
 
 @Composable
 fun NewsAppBar(
-    onBackClick: () -> Unit
+    onBackClick: () -> Unit,
 ) {
     TopAppBar(
         title = { Text(text = "NEWS") },
@@ -87,7 +98,7 @@ fun NewsAppBarPreview() {
 fun ListContent(
     news: LazyPagingItems<NewsResponse.Article>,
     navController: NavController,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
 ) {
 
     val result = handlePagingResult(news = news)
@@ -98,14 +109,17 @@ fun ListContent(
             verticalArrangement = Arrangement.spacedBy(10.dp)
         ) {
             items(
-                items = news,
-                key = { news ->
-                    news.url
+                count = news.itemCount,
+                key = { index ->
+                    news[index]?.url ?: ""
                 }
-            ) { news ->
-                news?.let {
-                    NewsItem(news = it) {
-                        navController.currentBackStackEntry?.arguments?.putParcelable("news", news)
+            ) { index ->
+                news.let {
+                    NewsItem(news = news[index]!!) {
+                        navController.currentBackStackEntry?.arguments?.putParcelable(
+                            "news",
+                            news[index]
+                        )
                         navController.navigate(Screen.Detail.route)
                     }
                     Box(
@@ -128,7 +142,7 @@ fun ListContent(
 
 @Composable
 fun handlePagingResult(
-    news: LazyPagingItems<NewsResponse.Article>
+    news: LazyPagingItems<NewsResponse.Article>,
 ): Boolean {
 
     news.apply {
@@ -143,13 +157,16 @@ fun handlePagingResult(
             loadState.refresh is LoadState.Loading -> {
                 false
             }
+
             error != null -> {
                 EmptyScreen(error)
                 false
             }
+
             news.itemCount < 1 -> {
                 false
             }
+
             else -> true
         }
 
