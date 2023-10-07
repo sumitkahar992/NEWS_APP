@@ -13,16 +13,9 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 object RepositoryModule {
 
-
     @Provides
     @Singleton
-    fun provideRepository(newsApi: NewsApi) : NewsRepository {
+    fun provideRepository(newsApi: NewsApi): NewsRepository {
         return NewsRepositoryImpl(newsApi)
     }
-
-
-
-
-
-
 }

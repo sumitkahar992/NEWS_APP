@@ -34,7 +34,6 @@ import coil.request.ImageRequest
 import com.example.paging_app.R
 import com.example.paging_app.domain.model.paging.User
 
-
 @Composable
 fun UserHome(viewModel: UserViewModel) {
     UserList(viewModel = viewModel)
@@ -42,7 +41,6 @@ fun UserHome(viewModel: UserViewModel) {
 
 @Composable
 fun UserList(viewModel: UserViewModel) {
-
     val pagingItems = viewModel.userPager.collectAsLazyPagingItems()
 
     LazyColumn {
@@ -65,7 +63,6 @@ fun UserList(viewModel: UserViewModel) {
             }
         }
         when (pagingItems.loadState.refresh) {
-
             is LoadState.NotLoading -> Unit
             LoadState.Loading -> {
                 item {
@@ -80,13 +77,9 @@ fun UserList(viewModel: UserViewModel) {
             }
 
             is LoadState.Error -> TODO()
-
         }
     }
-
-
 }
-
 
 @Composable
 fun Usercard(user: User) {
@@ -123,11 +116,8 @@ fun Usercard(user: User) {
                     .align(Alignment.CenterVertically)
             )
         }
-
     }
-
 }
-
 
 @Composable
 fun LoadingItem() {
@@ -147,7 +137,6 @@ fun LoadingItem() {
         )
     }
 }
-
 
 @Composable
 fun ErrorItem(message: String) {
@@ -185,58 +174,8 @@ fun ErrorItem(message: String) {
     }
 }
 
-
 @Preview
 @Composable
 fun UserPreview() {
     Usercard(user = User("Belal", "1", "Khan", "null", "Mr."))
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

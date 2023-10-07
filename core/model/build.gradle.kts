@@ -3,14 +3,11 @@ plugins {
 
     id("kotlin")
     kotlin("kapt")
-
 }
 
 dependencies {
 
-
     implementation(libs.moshi)
     implementation(libs.moshi.converter)
     kapt(libs.moshi.kapt)
-
 }

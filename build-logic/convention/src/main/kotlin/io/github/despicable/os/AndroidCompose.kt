@@ -26,6 +26,5 @@ internal fun Project.configureAndroidCompose(
             add("implementation", platform(bom))
             add("androidTestImplementation", platform(bom))
         }
-
     }
 }

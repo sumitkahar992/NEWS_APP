@@ -34,7 +34,6 @@ import com.example.paging_app.domain.model.news.NewsResponse
 import com.example.paging_app.presentation.navigation.Screen
 import com.example.paging_app.presentation.newsui.home.NewsItem
 
-
 @Composable
 fun NewsScreen(
     navController: NavController,
@@ -61,10 +60,8 @@ fun NewsScreen(
             news = news,
             navController = navController
         )
-
     }
 }
-
 
 @Composable
 fun NewsAppBar(
@@ -90,9 +87,8 @@ fun NewsAppBar(
 @Preview
 @Composable
 fun NewsAppBarPreview() {
-    NewsAppBar() { }
+    NewsAppBar { }
 }
-
 
 @Composable
 fun ListContent(
@@ -100,7 +96,6 @@ fun ListContent(
     navController: NavController,
     modifier: Modifier = Modifier,
 ) {
-
     val result = handlePagingResult(news = news)
 
     if (result) {
@@ -131,20 +126,14 @@ fun ListContent(
                     )
                 }
             }
-
-
         }
     }
-
-
 }
-
 
 @Composable
 fun handlePagingResult(
     news: LazyPagingItems<NewsResponse.Article>,
 ): Boolean {
-
     news.apply {
         val error = when {
             loadState.refresh is LoadState.Error -> loadState.refresh as LoadState.Error
@@ -169,9 +158,7 @@ fun handlePagingResult(
 
             else -> true
         }
-
     }
-
 }
 
 @Composable
@@ -180,50 +167,3 @@ fun EmptyScreen(error: LoadState.Error? = null) {
         Text(text = "EMPTY")
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -6,15 +6,12 @@ plugins {
 
 android {
 
-  namespace = "com.github.despicable.core.domain"
-
+    namespace = "com.github.despicable.core.domain"
 }
-
 
 dependencies {
 
-
- // Paging 3.0
+    // Paging 3.0
     implementation(libs.androidx.paging)
 
     implementation(projects.core.common)

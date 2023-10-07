@@ -9,16 +9,13 @@ android {
 
 dependencies {
 
-
-   // Paging 3.0
+    // Paging 3.0
     implementation(libs.androidx.paging)
 
     implementation(projects.core.common)
     implementation(projects.core.model)
     implementation(projects.core.database)
     implementation(projects.core.network)
-
-
 
     implementation(libs.androidx.core.ktx)
 

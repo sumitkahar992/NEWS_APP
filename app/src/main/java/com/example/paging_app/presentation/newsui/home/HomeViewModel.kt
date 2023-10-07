@@ -12,15 +12,13 @@ import kotlinx.coroutines.flow.merge
 import kotlinx.coroutines.flow.onEach
 import javax.inject.Inject
 
-
 @HiltViewModel
 class HomeViewModel @Inject constructor(
     private val newsRepository: NewsRepository
 ) : ViewModel() {
 
-
     private val _state = mutableStateOf(HomeDataState())
-    val state : State<HomeDataState> = _state
+    val state: State<HomeDataState> = _state
 
     val categories = newsRepository.getNewsCategories()
 
@@ -28,13 +26,11 @@ class HomeViewModel @Inject constructor(
         getTopHeadLines()
     }
 
-
-    private fun getTopHeadLines(){
+    private fun getTopHeadLines() {
         val topHeadlines = newsRepository.getTopHeadlines()
         val everything = newsRepository.getEverything()
 
         val homeNews = merge(topHeadlines, everything)
-
 
         homeNews.onEach { result ->
 
@@ -53,46 +49,7 @@ class HomeViewModel @Inject constructor(
                 is Resource.Loading -> {
                     _state.value = HomeDataState(isLoading = true)
                 }
-
-
             }
         }.launchIn(viewModelScope)
-
-
-
-
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }

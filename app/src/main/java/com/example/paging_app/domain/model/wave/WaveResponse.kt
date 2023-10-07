@@ -8,6 +8,3 @@ data class WaveResponse(
     val results: List<Results>?,
     val info: Info?,
 ) : Parcelable
-
-
-

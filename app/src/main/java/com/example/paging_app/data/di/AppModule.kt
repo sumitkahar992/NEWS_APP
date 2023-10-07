@@ -15,9 +15,6 @@ object AppModule {
     @Provides
     fun provideUserApi(): ApiService = ApiService()
 
-
     @Provides
     fun provideUserRepository(api: ApiService): UserRepository = UserRepositoryImpl(api)
-
-
 }

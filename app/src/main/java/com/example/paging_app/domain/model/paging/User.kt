@@ -13,7 +13,7 @@ data class User(
     val picture: String,
     @field:Json(name = "title")
     val title: String
-){
+) {
     val name: String
-    get() = "$title $firstName $lastName"
+        get() = "$title $firstName $lastName"
 }

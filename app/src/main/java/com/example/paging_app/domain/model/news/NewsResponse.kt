@@ -31,7 +31,7 @@ data class NewsResponse(
         val url: String,
         @Json(name = "urlToImage")
         val urlToImage: String?
-    ): Parcelable {
+    ) : Parcelable {
 
         @Parcelize
         data class Source(
@@ -39,11 +39,6 @@ data class NewsResponse(
             val id: String?,
             @Json(name = "name")
             val name: String
-        ): Parcelable
-
+        ) : Parcelable
     }
-
-
-
 }
-

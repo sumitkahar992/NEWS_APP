@@ -14,7 +14,6 @@ class NewsPagingSource(
     private val category: String
 ) : PagingSource<Int, NewsResponse.Article>() {
 
-
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, NewsResponse.Article> {
         val position = params.key ?: STARTING_INDEX
         return try {
@@ -43,38 +42,7 @@ class NewsPagingSource(
         }
     }
 
-
     override fun getRefreshKey(state: PagingState<Int, NewsResponse.Article>): Int? {
         return state.anchorPosition
     }
-
-
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

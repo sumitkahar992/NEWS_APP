@@ -15,7 +15,6 @@ import androidx.compose.ui.unit.dp
 
 @Composable
 fun ShimmerEffect() {
-
     LazyColumn(
         contentPadding = PaddingValues(all = 10.dp),
         verticalArrangement = Arrangement.spacedBy(10.dp)
@@ -24,9 +23,7 @@ fun ShimmerEffect() {
             AnimatedShimmerItem()
         }
     }
-
 }
-
 
 @Composable
 fun AnimatedShimmerItem() {
@@ -45,8 +42,6 @@ fun AnimatedShimmerItem() {
     ShimmerItem(alpha = alphaAnim)
 }
 
-
-
 @Composable
 fun ShimmerItem(alpha: Float) {
     Row(
@@ -56,7 +51,6 @@ fun ShimmerItem(alpha: Float) {
             .background(Color.Transparent)
             .padding(all = 10.dp)
     ) {
-
         Box(
             modifier = Modifier
                 .alpha(alpha = alpha)
@@ -70,7 +64,6 @@ fun ShimmerItem(alpha: Float) {
                 .fillMaxHeight()
                 .weight(2f)
         ) {
-
             Surface(
                 modifier = Modifier
                     .alpha(alpha = alpha)
@@ -90,12 +83,9 @@ fun ShimmerItem(alpha: Float) {
                 )
                 Spacer(modifier = androidx.compose.ui.Modifier.height(6.dp))
             }
-
         }
-
     }
 }
-
 
 @Composable
 @Preview
@@ -107,20 +97,17 @@ fun ShimmerItemPreview() {
 fun SliderShimmerItem(
     alpha: Float
 ) {
-
     Row(
         modifier = Modifier
             .fillMaxWidth(fraction = 5f)
             .height(180.dp)
     ) {
-
         Column(
             modifier = Modifier
                 .fillMaxHeight()
                 .weight(3f)
                 .padding(top = 4.dp, bottom = 4.dp, end = 8.dp, start = 8.dp)
         ) {
-
             Box(
                 modifier = Modifier
                     .alpha(alpha = alpha)
@@ -144,8 +131,6 @@ fun SliderShimmerItem(
                     .height(25.dp)
                     .background(Color(0xFFE3E3E3))
             ) {}
-
-
         }
 
         Box(
@@ -156,9 +141,7 @@ fun SliderShimmerItem(
                 .padding(top = 4.dp, bottom = 4.dp, end = 8.dp)
                 .background(Color(0xFFE3E3E3)),
         ) {}
-
     }
-
 }
 
 @Composable

@@ -21,9 +21,6 @@ class AndroidApplicationConventionPlugin : Plugin<Project> {
 //            extensions.configure<ApplicationAndroidComponentsExtension> {
 //                configurePrintApksTask(this)
 //            }
-
         }
     }
 }
-
-

@@ -16,12 +16,10 @@ interface NewsApi {
         @Query("apiKey") apiKey: String = "2671fd27a2834fc1a0671903c9213771"
     ): NewsResponse
 
-
     @GET("everything?q=technology")
     suspend fun getEverything(
         @Query("apiKey") apiKey: String = "2671fd27a2834fc1a0671903c9213771"
     ): NewsResponse
-
 
     @GET("top-headlines")
     suspend fun getNewsByCategory(
@@ -32,7 +30,6 @@ interface NewsApi {
         @Query("pageSize") pageSize: Int
     ): NewsResponse
 
-
     @GET("everything")
     suspend fun searchNews(
         @Query("apiKey") apiKey: String = "2671fd27a2834fc1a0671903c9213771",
@@ -40,40 +37,4 @@ interface NewsApi {
         @Query("page") page: Int,
         @Query("pageSize") pageSize: Int
     ): NewsResponse
-
-
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

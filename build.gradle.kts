@@ -13,6 +13,7 @@ plugins {
     alias(libs.plugins.kotlin.android) apply false
     alias(libs.plugins.hilt) apply false
     alias(libs.plugins.ksp) apply false
+    id("os.detekt")
 }
 
-//apply(from = File("gradle/projectDependencyGraph.gradle"))
+// apply(from = File("gradle/projectDependencyGraph.gradle"))

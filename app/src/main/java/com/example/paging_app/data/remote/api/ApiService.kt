@@ -16,7 +16,6 @@ interface ApiService {
         @Query("limit") limit: Int
     ): UserResponse
 
-
     companion object {
 
         private const val BASE_URL = "https://dummyapi.io/data/v1/"
@@ -33,19 +32,17 @@ interface ApiService {
         private fun getRetrofitClient(): OkHttpClient {
             return OkHttpClient.Builder()
                 .addInterceptor { chain ->
-                    chain.proceed(chain.request().newBuilder().also {
-                        it.addHeader("Accept", "application/json")
-                        it.addHeader("app-id", "6363f81bcf8f4e1521623233")
-                    }.build())
-
+                    chain.proceed(
+                        chain.request().newBuilder().also {
+                            it.addHeader("Accept", "application/json")
+                            it.addHeader("app-id", "6363f81bcf8f4e1521623233")
+                        }.build()
+                    )
                 }.also { client ->
                     val logging = HttpLoggingInterceptor()
                     logging.setLevel(HttpLoggingInterceptor.Level.BODY)
                     client.addInterceptor(logging)
-
                 }.build()
         }
     }
-
-
 }

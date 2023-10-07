@@ -2,11 +2,8 @@ package com.example.paging_app.utils
 
 import com.example.paging_app.domain.model.news.NewsResponse
 
-
 const val STARTING_INDEX = 1
 const val NETWORK_PAGE_SIZE = 10
-
-
 
 val dummyNewsItem = NewsResponse.Article(
     author = "Some Author",

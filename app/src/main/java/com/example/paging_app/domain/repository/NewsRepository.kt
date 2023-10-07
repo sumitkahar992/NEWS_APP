@@ -18,6 +18,4 @@ interface NewsRepository {
     fun searchNewsFlow(query: String): Flow<PagingData<NewsResponse.Article>>
 
     fun getNewsCategories(): List<String>
-
-
 }

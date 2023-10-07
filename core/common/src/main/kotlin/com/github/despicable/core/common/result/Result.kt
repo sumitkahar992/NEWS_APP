@@ -12,7 +12,6 @@ sealed interface Result<out T> {
     object Loading : Result<Nothing>
 }
 
-
 fun <T> Flow<T>.asResult(): Flow<Result<T>> {
     return this
         .map<T, Result<T>> { Result.Success(it) }

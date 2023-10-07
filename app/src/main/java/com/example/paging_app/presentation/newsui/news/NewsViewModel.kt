@@ -14,11 +14,9 @@ class NewsViewModel @Inject constructor(
     private val newsRepository: NewsRepository
 ) : ViewModel() {
 
-
-    var allNews : Flow<PagingData<NewsResponse.Article>> = emptyFlow()
+    var allNews: Flow<PagingData<NewsResponse.Article>> = emptyFlow()
 
     fun getNewsByCategory(category: String) {
         allNews = newsRepository.getNewsByCategory(category)
     }
-
 }

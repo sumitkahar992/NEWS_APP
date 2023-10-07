@@ -55,10 +55,8 @@ fun HomeScreen(
 
     Scaffold(
         topBar = { HomeAppBar() }
-    ){
-        LazyColumn(modifier = Modifier.padding(paddingValues = it)){
-
-
+    ) {
+        LazyColumn(modifier = Modifier.padding(paddingValues = it)) {
             item {
                 HomeCategory(
                     modifier = Modifier
@@ -82,7 +80,7 @@ fun HomeScreen(
                         .height(1.dp)
                         .background(Black)
                 )
-                Box{
+                Box {
                     HorizontalPager(
                         modifier = Modifier
                             .fillMaxWidth()
@@ -92,10 +90,10 @@ fun HomeScreen(
                         verticalAlignment = Alignment.Top
                     ) { position ->
                         val news = topHeadLines[position]
-                        NewsSlider(news = news)
-                        {
+                        NewsSlider(news = news) {
                             navController.currentBackStackEntry?.arguments?.putParcelable(
-                                "news", news
+                                "news",
+                                news
                             )
                             navController.navigate(Screen.Detail.route)
                         }
@@ -146,7 +144,6 @@ fun HomeScreen(
                         imageVector = Icons.Default.ArrowForward,
                         contentDescription = null
                     )
-
                 }
             }
 
@@ -162,10 +159,9 @@ fun HomeScreen(
                             .background(Black)
                     )
                 }
-
             }
 
-            itemsIndexed(everything) {index, news ->
+            itemsIndexed(everything) { index, news ->
                 NewsItem(news = news) {
                     navController.currentBackStackEntry?.arguments?.putParcelable("news", news)
                     navController.navigate(Screen.Detail.route)
@@ -180,16 +176,9 @@ fun HomeScreen(
                     )
                 }
             }
-
-
-
-
         }
     }
-
 }
-
-
 
 @Composable
 fun HomeCategory(
@@ -228,7 +217,6 @@ fun HomeCategory(
                 )
                 Spacer(modifier = Modifier.padding(horizontal = 4.dp))
             }
-
         }
         Box(
             modifier = Modifier
@@ -237,11 +225,8 @@ fun HomeCategory(
                 .height(1.dp)
                 .background(Black)
         )
-
     }
-
 }
-
 
 @Preview(showBackground = true)
 @Composable
@@ -250,7 +235,6 @@ fun HomeCategoryPreview(
 ) {
     HomeCategory(categories = categories, onCategorySelected = {})
 }
-
 
 @Composable
 fun NewsSlider(
@@ -261,14 +245,12 @@ fun NewsSlider(
     val matrix = ColorMatrix()
     matrix.setToSaturation(0F)
 
-
     Row(
         modifier = modifier
             .fillMaxWidth(fraction = 5f)
             .height(180.dp)
             .clickable { onNewsClick() }
     ) {
-
         Column(
             modifier = Modifier
                 .fillMaxHeight()
@@ -310,7 +292,6 @@ fun NewsSlider(
                     contentDescription = null
                 )
             }
-
         }
 
         Column(
@@ -333,16 +314,9 @@ fun NewsSlider(
                 colorFilter = ColorFilter.colorMatrix(matrix),
                 contentDescription = null
             )
-
         }
-
-
-
-
     }
-
 }
-
 
 @Composable
 @Preview(showBackground = true)
@@ -358,7 +332,7 @@ fun NewsSliderPreview() {
             url = "",
             urlToImage = "https://images.news18.com/ibnlive/uploads/2022/10/gamma-rays-166607875216x9.png",
         )
-    ){}
+    ) {}
 }
 
 @Composable
@@ -415,20 +389,15 @@ fun NewsItem(
                 fontWeight = FontWeight.Bold,
                 fontFamily = FontFamily.Default
             )
-
         }
-
     }
-
 }
 
 @Preview(showBackground = true)
 @Composable
 fun NewsItemPreview() {
-
     NewsItem(news = dummyNewsItem) {}
 }
-
 
 @Preview
 @Composable
@@ -440,72 +409,13 @@ fun HomeAppBar() {
         backgroundColor = White,
         navigationIcon = {
             IconButton(onClick = {
-
             }) {
                 Icon(
                     modifier = Modifier.size(38.dp),
                     imageVector = Icons.Default.Search,
-                    contentDescription = null)
+                    contentDescription = null
+                )
             }
         }
     )
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

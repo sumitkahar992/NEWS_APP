@@ -13,7 +13,6 @@ dependencies {
     implementation(projects.core.domain)
     implementation(projects.core.model)
 
-
     implementation(libs.androidx.core.ktx)
     implementation(libs.coil.kt)
     implementation(libs.coil.kt.compose)
@@ -24,7 +23,6 @@ dependencies {
 
     implementation(libs.androidx.compose.material)
     implementation(libs.androidx.compose.material.icons.extended)
-
 
     debugApi(libs.androidx.compose.ui.tooling)
     api(libs.androidx.compose.ui.tooling.preview)

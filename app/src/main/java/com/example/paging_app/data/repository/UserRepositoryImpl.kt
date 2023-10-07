@@ -3,8 +3,6 @@ package com.example.paging_app.data.repository
 import com.example.paging_app.data.remote.api.ApiService
 import com.example.paging_app.domain.model.paging.UserResponse
 import com.example.paging_app.domain.repository.UserRepository
-import kotlinx.coroutines.delay
-import okio.IOException
 
 class UserRepositoryImpl(
     private val api: ApiService
@@ -19,6 +17,4 @@ class UserRepositoryImpl(
 //            throw IOException("some Error Occurred")
         return api.getUser(page, limit)
     }
-
-
 }

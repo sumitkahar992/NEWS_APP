@@ -10,7 +10,6 @@ import com.example.paging_app.domain.repository.UserRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
-
 @HiltViewModel
 class UserViewModel @Inject constructor(
     private val repository: UserRepository
@@ -18,8 +17,7 @@ class UserViewModel @Inject constructor(
 
     val userPager = Pager(
         PagingConfig(pageSize = 10)
-    ){
+    ) {
         UserPagingSource(repository)
     }.flow.cachedIn(viewModelScope)
-
 }

@@ -19,9 +19,7 @@ object NetworkModule {
     @Singleton
     fun provideLoggingInterceptor(): HttpLoggingInterceptor {
         return HttpLoggingInterceptor().apply {
-
             this.setLevel(HttpLoggingInterceptor.Level.BODY)
-
         }
     }
 
@@ -34,7 +32,6 @@ object NetworkModule {
             .build()
     }
 
-
     @Provides
     @Singleton
     fun provideNewsApi(okHttpClient: OkHttpClient): NewsApi {
@@ -45,6 +42,4 @@ object NetworkModule {
             .build()
             .create(NewsApi::class.java)
     }
-
-
 }

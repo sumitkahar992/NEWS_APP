@@ -9,12 +9,9 @@ android {
 
 dependencies {
 
-
-
     implementation(libs.moshi)
     implementation(libs.moshi.converter)
     kapt(libs.moshi.kapt)
-
 
     implementation(projects.core.model)
     implementation(projects.core.common)

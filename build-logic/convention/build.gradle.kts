@@ -13,6 +13,7 @@ dependencies {
     compileOnly(libs.android.gradlePlugin)
     compileOnly(libs.kotlin.gradlePlugin)
     compileOnly(libs.ksp.gradlePlugin)
+    implementation(libs.detekt.gradle.plugin)
 }
 
 gradlePlugin {
@@ -49,7 +50,5 @@ gradlePlugin {
             id = "os.android.room"
             implementationClass = "AndroidRoomConventionPlugin"
         }
-
-
     }
 }

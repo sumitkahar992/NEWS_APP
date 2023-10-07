@@ -4,7 +4,7 @@ import android.os.Parcelable
 import kotlinx.parcelize.Parcelize
 
 @Parcelize
-data class Login (
+data class Login(
     val uuid: String?,
     val username: String?,
     val password: String?,
@@ -12,4 +12,4 @@ data class Login (
     val md5: String?,
     val sha1: String?,
     val sha256: String?
-): Parcelable
+) : Parcelable

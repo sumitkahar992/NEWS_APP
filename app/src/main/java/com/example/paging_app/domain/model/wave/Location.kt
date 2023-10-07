@@ -4,7 +4,7 @@ import android.os.Parcelable
 import kotlinx.parcelize.Parcelize
 
 @Parcelize
-data class Location (
+data class Location(
     val street: Street?,
     val city: String?,
     val state: String?,
@@ -12,7 +12,7 @@ data class Location (
     val postcode: String?,
     val coordinates: Coordinates?,
     val timezone: Timezone?
-): Parcelable {
+) : Parcelable {
     fun getFullAddress(): String {
         return "${state ?: ""}, ${city ?: ""}, ${street?.name ?: ""} ${street?.number ?: ""}, ${postcode ?: ""}"
     }

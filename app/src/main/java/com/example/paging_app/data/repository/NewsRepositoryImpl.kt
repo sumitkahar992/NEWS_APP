@@ -14,11 +14,9 @@ import kotlinx.coroutines.flow.flow
 import retrofit2.HttpException
 import javax.inject.Inject
 
-
 class NewsRepositoryImpl @Inject constructor(
     private val newsApi: NewsApi
 ) : NewsRepository {
-
 
     override fun getTopHeadlines(): Flow<Resource<NewsResponse>> = flow {
         try {
@@ -26,7 +24,6 @@ class NewsRepositoryImpl @Inject constructor(
 
             val result = newsApi.getTopHeadlines()
             emit(Resource.Success(result))
-
         } catch (e: java.io.IOException) {
             e.printStackTrace()
             emit(
@@ -37,15 +34,12 @@ class NewsRepositoryImpl @Inject constructor(
         }
     }
 
-
-
     override fun getEverything(): Flow<Resource<NewsResponse>> = flow {
         try {
             emit(Resource.Loading())
 
             val result = newsApi.getEverything()
             emit(Resource.Success(result))
-
         } catch (e: java.io.IOException) {
             e.printStackTrace()
             emit(
@@ -63,8 +57,6 @@ class NewsRepositoryImpl @Inject constructor(
         }
     }
 
-
-
     override fun getNewsByCategory(
         category: String
     ): Flow<PagingData<NewsResponse.Article>> = Pager(
@@ -74,18 +66,12 @@ class NewsRepositoryImpl @Inject constructor(
         }
     ).flow
 
-
-
-
     override fun searchNews(query: String): Flow<PagingData<NewsResponse.Article>> = Pager(
         config = PagingConfig(pageSize = 10),
         pagingSourceFactory = {
             SearchNewsPagingSource(newsApi, query)
         }
     ).flow
-
-
-
 
     override fun searchNewsFlow(query: String): Flow<PagingData<NewsResponse.Article>> = Pager(
         config = PagingConfig(pageSize = 10),
@@ -94,44 +80,12 @@ class NewsRepositoryImpl @Inject constructor(
         }
     ).flow
 
-
-
-
     override fun getNewsCategories(): List<String> = listOf(
-        "Sports", "Health", "Entertainment", "Science", "Business", "Technology"
+        "Sports",
+        "Health",
+        "Entertainment",
+        "Science",
+        "Business",
+        "Technology"
     )
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
