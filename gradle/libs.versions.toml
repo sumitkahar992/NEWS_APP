@@ -3,28 +3,28 @@ ktorClientAndroid = "2.3.3"
 targetSdk = "34"
 
 androidGradlePlugin = "8.1.2"
-kotlin = "1.9.0"
+kotlin = "1.9.10"
 androidDesugarJdkLibs = "2.0.3"
 
 
 androidxCore = "1.12.0"
 androidxAppCompat = "1.6.1"
-androidxActivity = "1.7.2"
-androidxComposeCompiler = "1.5.1"
+androidxActivity = "1.8.0"
+androidxComposeCompiler = "1.5.3"
 androidxStartup = "1.1.1"
 androidxHiltNavigationCompose = "1.0.0"
 androidxConstraintlayoutCompose = "1.0.1"
-androidxLifecycle = "2.7.0-alpha02"
+androidxLifecycle = "2.7.0-alpha03"
 
 
-googleMaterial = "1.9.0"
+googleMaterial = "1.10.0"
 androidxCompose = "1.2.1"
-androidxComposeMaterial3 = "1.2.0-alpha08"
+androidxComposeMaterial3 = "1.2.0-alpha10"
 
-hilt = "2.48"
+hilt = "2.48.1"
 hiltExt = "1.0.0"
 
-androidxNavigation = "2.7.3"
+androidxNavigation = "2.7.4"
 
 junit4 = "4.13.2"
 androidxTestCore = "1.6.0-alpha02"
@@ -34,18 +34,18 @@ androidxEspresso = "3.5.1"
 coil = "2.4.0"
 javaxInject = "1"
 timber = "5.0.1"
-okhttp = "4.11.0"
+okhttp = "5.0.0-alpha.3"
 retrofit = "2.9.0"
 gson = "2.10.1"
-room = "2.5.2"
+room = "2.6.0"
 turbine = "0.9.0"
-ksp = "1.9.0-1.0.13"
+ksp = "1.9.10-1.0.13"
 
 # Quality
-ktlint = "0.49.1"
+ktlint = "0.50.0"
 composerules = "0.0.26"
 
-androidxComposeBom = "2023.09.02"
+androidxComposeBom = "2023.10.01"
 
 # Moshi
 moshi = "1.15.0"
@@ -54,17 +54,15 @@ moshiConverter = "2.9.0"
 kotlinxCoroutines = "1.7.3"
 kotlinxDatetime = "0.4.1"
 
-ktor = "2.3.4"
+ktor = "2.3.5"
 kotlinxSerializationJson = "1.6.0"
-
-accompanist = "0.32.0"
 
 androidxCoreSplashscreen = "1.0.1"
 androidxDataStore = "1.0.0"
 
-paging = "3.2.1"
+paging = "3.3.0-alpha02"
 
-firebaseBom = "31.2.0"
+firebaseBom = "32.4.1"
 firebaseCrashlyticsPlugin = "2.9.9"
 firebasePerfPlugin = "1.4.2"
 gmsPlugin = "4.3.14"
@@ -188,9 +186,6 @@ moshi-converter = { group = "com.squareup.retrofit2", name = "converter-moshi", 
 ktlint = { module = "com.pinterest:ktlint", version.ref = "ktlint" }
 detekt = { module = "io.gitlab.arturbosch.detekt:detekt-gradle-plugin", version.ref = "detekt" }
 composerules = { module = "com.twitter.compose.rules:detekt", version.ref = "composerules" }
-
-# accompanist
-accompanist-systemuicontroller = { group = "com.google.accompanist", name = "accompanist-systemuicontroller", version.ref = "accompanist" }
 
 androidx-core-splashscreen = { group = "androidx.core", name = "core-splashscreen", version.ref = "androidxCoreSplashscreen" }
 

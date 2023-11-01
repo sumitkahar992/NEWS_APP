@@ -8,10 +8,10 @@ plugins {
 
 android {
 
-    namespace = "com.example.paging_app"
+    namespace = "com.example.news_app"
 
     defaultConfig {
-        applicationId = "com.example.paging_app"
+        applicationId = "com.example.news_app"
         versionCode = 100
         versionName = "0.0.1"
     }
@@ -40,7 +40,6 @@ dependencies {
     implementation(libs.androidx.navigation.compose)
 
     implementation(libs.androidx.core.splashscreen)
-    implementation(libs.accompanist.systemuicontroller)
 
     implementation(libs.coil.kt)
     implementation(libs.coil.kt.compose)
@@ -58,9 +57,6 @@ dependencies {
     implementation("androidx.paging:paging-runtime:3.2.1")
     implementation("androidx.paging:paging-compose:3.3.0-alpha02")
 
-    // Horizontal Pager and Indicators - Accompanist
-    implementation("com.google.accompanist:accompanist-pager:0.30.1")
-    implementation("com.google.accompanist:accompanist-pager-indicators:0.30.1")
 
-    implementation("androidx.navigation:navigation-compose:2.7.3")
+    implementation("androidx.navigation:navigation-compose:2.7.4")
 }
